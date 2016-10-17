@@ -150,7 +150,7 @@ class Game
     elsif player_value < 21 && player_hand >= 6
       player_wins
     elsif player_value == dealer_value && player_hand.length >=
-          dealer_hand.length
+                                          dealer_hand.length
       player_wins
     elsif dealer_value == player_value && dealer_hand.length > player_hand.length
       dealer_won
