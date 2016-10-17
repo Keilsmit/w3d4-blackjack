@@ -134,7 +134,7 @@ class Game
 
 
   def dealer_game
-    until dealer_value > 16 || dealer_value > player_value
+    until dealer_value > 16 || dealer_value > player_value || dealer_value == 21
       dealer_display(true)
       dealer_hand << bj_deck.deal
     end
@@ -147,14 +147,22 @@ class Game
       dealer_bust
     elsif dealer_value == 21
       blackjack
+      dealer_won
     elsif dealer_value < 21 && dealer_value > player_value
       dealer_won
     elsif player_value == 21
       blackjack
+      player_wins
     elsif player_value > 21
       bust_display
     elsif player_value >= dealer_value
       player_wins
+    elsif player_value < 21 && player_hand >= 6
+      player_wins
+    elsif player_value == dealer_value && player_hand.length >= dealer_hand.length
+      player_wins
+    elsif dealer_value == player_value && dealer_hand.length > player_hand.length
+      dealer_won
     else
       player_lost
     end
