@@ -13,7 +13,7 @@ class Deck
 
 
   def make_a_deck
-    suite = %w(club spade heart diamond)
+    suite = %w(Club Spades Heart Diamond)
     face = %w(A 2 3 4 5 6 7 8 9 10 J Q K)
     self.cards = []
 

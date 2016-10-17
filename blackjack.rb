@@ -21,13 +21,13 @@ class Game
 
 
   def greeting
-      puts "Want to play Black Jack (y/n)"
-      desire = gets.chomp.downcase
+    puts "\nWant to play Black Jack (y/n)"
+    desire = gets.chomp.downcase
     if desire == "y"
-      puts "GREAT!!!!"
+      puts "\nDealer's first card:"
       first_deal
     else
-      puts "Try again later!"
+      puts "Thanks for Playing"
       exit
     end
   end
@@ -38,29 +38,31 @@ class Game
       player_hand << bj_deck.deal
       dealer_hand << bj_deck.deal
     end
-    puts "The Dealer is Showing: #{dealer_hand.first}"
+    puts "#{dealer_hand.first}\n"
     player_display
     find_player_value
   end
   # TURN METHOD ENDS HERE(show cards in player's hand and returns their value)
 
   def another_player_deal
+    game_outcome
     player_hand << bj_deck.deal
+    # player_display
+    puts "\n\nPlayer current points total:\n #{player_value}pts"
     player_display
-    puts "Player's has #{player_value}total pts"
     hit_or_stay
   end
   # ANOTHER_DEAL ENDS HERE
 
   def player_display
     player_hand.each do |card|
-      puts "Player 1 is showing: A #{card.face} of #{card.suite}"
+      puts "\nThe Player is showing:\n  #{card.face} of #{card.suite}"
     end
-      if player_bust
-        game_over
-      else
-        hit_or_stay
-      end
+    if player_bust
+      game_over
+    else
+      hit_or_stay
+    end
   end
   # player_display METHOD ENDS HERE
 
@@ -68,13 +70,13 @@ class Game
     if player_bust
       game_over
     else
-      puts "Do you want to 'Hit' or 'Stay'?"
-        desire = gets.chomp.downcase
-          if desire == "hit"
-               another_player_deal
-          else
-            dealer_game
-          end
+      puts "\nDo you want to 'Hit' or 'Stay'?"
+      desire = gets.chomp.downcase
+      if desire == "hit"
+        another_player_deal
+      else
+        dealer_game
+      end
       game_over
     end
   end
@@ -98,16 +100,20 @@ class Game
 
 
   def player_wins
-    puts "Player Wins!"
+    puts "\n\n Player Wins!"
   end
 
   def player_lost
-    puts "--------Sorry--------Player Lost!!!!!!"
+    puts "\n\n You Lost!"
+  end
+
+  def bust_display
+    puts "\n\n Player Bust!"
   end
 
 
   def blackjack
-      puts "!!!Black Jack!!!"
+    puts "\n\n BLACK JACK!"
   end
 
 
@@ -118,10 +124,10 @@ class Game
   def dealer_display(full = false)
     if full
       dealer_hand.each do |card|
-        puts "Dealer is showing: #{card.face} of #{card.suite}"
+        puts "\n Dealer is showing: \n  #{card.face} of #{card.suite}\n"
       end
     else
-      puts "Dealer is showing: #{dealer_hand.first.face} of #{dealer_hand.first.suite}"
+      puts "\nDealer is showing: \n  #{dealer_hand.first.face} of #{dealer_hand.first.suite}\n"
     end
   end
   # computer_display METHOD ENDS HERE
@@ -132,8 +138,7 @@ class Game
       dealer_display(true)
       dealer_hand << bj_deck.deal
     end
-      dealer_display(true)
-      # exit
+    dealer_display(true)
   end
 
 
@@ -146,8 +151,8 @@ class Game
       dealer_won
     elsif player_value == 21
       blackjack
-    elsif player_value >21
-      player_lost
+    elsif player_value > 21
+      bust_display
     elsif player_value >= dealer_value
       player_wins
     else
@@ -157,12 +162,12 @@ class Game
   end
 
   def dealer_bust
-      puts "\nDealer Bust!! \n\n ---------Game Over!!!!!!!!!!!-----------"
+    puts "\n\n DEALER BUST!"
   end
   # BUST METHOD ENDS HERE
 
   def dealer_won
-    puts "DEALER WON!!!!\n\n ------------Game Over!!!!!!!!!---------------"
+    puts "\n\n DEALER WON!"
   end
 
 
