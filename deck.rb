@@ -1,7 +1,6 @@
-require "./card.rb"
+require './card.rb'
 
 class Deck
-
   attr_accessor :cards
 
   def initialize
@@ -9,8 +8,6 @@ class Deck
     shuffle
   end
   # Initialize ends here
-
-
 
   def make_a_deck
     suite = %w(Club Spades Heart Diamond)
@@ -26,8 +23,6 @@ class Deck
   end
   # make_a_deck ends here
 
-
-
   def shuffle
     cards.shuffle!
   end
@@ -35,8 +30,5 @@ class Deck
   def deal
     cards.shift
   end
-
-
-
 end
 # Deck class ends here

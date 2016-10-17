@@ -1,15 +1,14 @@
-require_relative "deck.rb"
-require_relative "card.rb"
-require "pry"
+require_relative 'deck.rb'
+require_relative 'card.rb'
+require 'pry'
 
 class Game
-
-  attr_accessor :dealer_hand, :player_hand,:bj_deck
+  attr_accessor :dealer_hand, :player_hand, :bj_deck
 
   def initialize
     self.dealer_hand = []
     self.player_hand = []
-    self.bj_deck=Deck.new
+    self.bj_deck = Deck.new
     greeting
   end
   # Initialize ends here
@@ -19,15 +18,14 @@ class Game
   end
   # PLAY METHOD STARTS THE GAME--METHOD ENDS HERE
 
-
   def greeting
     puts "\nWant to play Black Jack (y/n)"
     desire = gets.chomp.downcase
-    if desire == "y"
+    if desire == 'y'
       puts "\nDealer's first card:"
       first_deal
     else
-      puts "Thanks for Playing"
+      puts 'Thanks for Playing'
       exit
     end
   end
@@ -72,7 +70,7 @@ class Game
     else
       puts "\nDo you want to 'Hit' or 'Stay'?"
       desire = gets.chomp.downcase
-      if desire == "hit"
+      if desire == 'hit'
         another_player_deal
       else
         dealer_game
@@ -92,12 +90,10 @@ class Game
   end
   # BUST METHOD ENDS HERE
 
-
   def player_value
-    player_hand.reduce(0) {|sum, card| sum + card.value}
+    player_hand.reduce(0) { |sum, card| sum + card.value }
   end
   # FIND_PLAYER_VALUE GOES HERE
-
 
   def player_wins
     puts "\n\n Player Wins!"
@@ -111,14 +107,9 @@ class Game
     puts "\n\n Player Bust!"
   end
 
-
   def blackjack
     puts "\n\n BLACK JACK!"
   end
-
-
-
-
 
   # COMPUTER_PLAYER LOGIC STARTS BELOW:-------------------------------------
   def dealer_display(full = false)
@@ -132,7 +123,6 @@ class Game
   end
   # computer_display METHOD ENDS HERE
 
-
   def dealer_game
     until dealer_value > 16 || dealer_value > player_value || dealer_value == 21
       dealer_display(true)
@@ -140,7 +130,6 @@ class Game
     end
     dealer_display(true)
   end
-
 
   def game_outcome
     if dealer_value > 21
@@ -178,24 +167,16 @@ class Game
     puts "\n\n DEALER WON!"
   end
 
-
   def dealer_value
-    dealer_hand.reduce(0) {|sum, card| sum + card.value}
+    dealer_hand.reduce(0) { |sum, card| sum + card.value }
   end
   # find_computer_value ends here
 
-
   # END OF COMPUTER_PLAYER LOGIC----------------------------------------------
-
 
   def rematch
     Game.new
   end
-
-
-
-
-
 end
 # Game class ends here
 

@@ -1,8 +1,5 @@
 class Card
-
   attr_accessor :face, :suite, :value
-
-
 
   def initialize(face, suite)
     self.face = face
@@ -15,26 +12,17 @@ class Card
   end
 
   def card_value
-    if face == "A"
-      self.value = 11
-    elsif face == "K"
-      self.value = 10
-    elsif face == "Q"
-      self.value = 10
-    elsif face == "J"
-      self.value = 10
-    else
-      self.value = face.to_i
-    end
+    self.value = if face == 'A'
+                   11
+                 elsif face == 'K'
+                   10
+                 elsif face == 'Q'
+                   10
+                 elsif face == 'J'
+                   10
+                 else
+                   face.to_i
+                 end
   end
-
-
-
-
-
-
-
-
-
 end
 # Card CLASS ends HERE--
