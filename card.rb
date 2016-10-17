@@ -1,3 +1,4 @@
+# This is the class that makes the cards
 class Card
   attr_accessor :face, :suite, :value
 

@@ -118,7 +118,8 @@ class Game
         puts "\n Dealer is showing: \n  #{card.face} of #{card.suite}\n"
       end
     else
-      puts "\nDealer is showing: \n  #{dealer_hand.first.face} of #{dealer_hand.first.suite}\n"
+      puts "\nDealer is showing:
+      \n  #{dealer_hand.first.face} of #{dealer_hand.first.suite}\n"
     end
   end
   # computer_display METHOD ENDS HERE
