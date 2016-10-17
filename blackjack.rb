@@ -1,7 +1,7 @@
 require_relative 'deck.rb'
 require_relative 'card.rb'
 require 'pry'
-
+# This class has game logic and runs game
 class Game
   attr_accessor :dealer_hand, :player_hand, :bj_deck
 
@@ -149,7 +149,8 @@ class Game
       player_wins
     elsif player_value < 21 && player_hand >= 6
       player_wins
-    elsif player_value == dealer_value && player_hand.length >= dealer_hand.length
+    elsif player_value == dealer_value && player_hand.length >=
+          dealer_hand.length
       player_wins
     elsif dealer_value == player_value && dealer_hand.length > player_hand.length
       dealer_won

@@ -13,17 +13,13 @@ class Card
   end
 
   def card_value
-    self.value = if face == 'A'
-                   11
-                 elsif face == 'K'
-                   10
-                 elsif face == 'Q'
-                   10
-                 elsif face == 'J'
-                   10
-                 else
-                   face.to_i
-                 end
+    self.value =  if %w(J Q K).include? face
+                    10
+                  elsif face == 'A'
+                    11
+                  else
+                    face.to_i
+                  end
   end
 end
 # Card CLASS ends HERE--
